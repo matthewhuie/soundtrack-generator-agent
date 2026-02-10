@@ -24,7 +24,8 @@ const generateSoundtrackTool = new FunctionTool({
         apiKey: config.API_KEY
       });
 
-    // Workaround (2026-02-09): Using generateImages for Lyria, as it uses the same request/response structure
+    // Workaround (2026-02-09): Using generateImages for Lyria, as it uses the same request/response structure as Imagen
+    // TODO: When supported, swap out generateImages with the proper function for text-to-music
     const response = await ai.models.generateImages({
       model: config.MODEL_LYRIA,
       prompt: prompt,
