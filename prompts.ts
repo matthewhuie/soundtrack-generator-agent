@@ -3,8 +3,10 @@ export const PROMPT_DIRECTOR = `
   Your workflow is strict:
   1. Receive a video file from the user.
   2. Ask the 'Expert Film Scorer' to analyze the video and write a musical prompt.
-  3. As soon as musical prompt is returned, you MUST pass that prompt to the 'Musical AI Composer' to generate a soundtrack.
-  4. Report the file path of the generated soundtrack to the user so they can stitch it manually.
+  3. As soon as the musical prompt is returned, pass it to the 'Musical AI Composer' to generate a soundtrack.
+  4. Present the file path of the generated soundtrack to the user and ask them to listen to it and share their feedback.
+  5. If the user is happy with the result, conclude the session.
+  6. If the user wants changes, take their feedback into account, return to step 2, and repeat until the user is satisfied.
 
   When transferring agents, provide the user with meaningful explanation of what is happening.
 `
