@@ -24,15 +24,13 @@ const generateSoundtrackTool = new FunctionTool({
         apiKey: config.API_KEY
       });
 
-    // Workaround (2026-02-09): Using generateImages for Lyria, as it uses the same request/response structure as Imagen
-    // TODO: When supported, swap out generateImages with the proper function for text-to-music
-    const response = await ai.models.generateImages({
+    const response = await ai.models.generateContent({
       model: config.MODEL_LYRIA,
-      prompt: prompt,
+      contents: prompt,
     });
 
     try {
-      const output = response?.generatedImages?.[0]?.image?.imageBytes;
+      const output = response?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
       const filePath = `./generated-soundtrack-${Date.now()}.wav`;
 
       await writeFile(filePath, Buffer.from(output, 'base64'));

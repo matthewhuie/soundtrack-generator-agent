@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project provides an agent that generates a soundtrack for an input video.  The agent takes the content and mood of the video into consideration, and leverages music generation using Lyria 2 to create a relevant audio overlay for the video.  This sample demostrates ADK development with TypeScript, multi-agent interaction, tools, and using Google Gen AI SDK.  The output is saved on the user's local disk.
+This project provides an agent that generates a soundtrack for an input video.  The agent takes the content and mood of the video into consideration, and leverages music generation using Lyria 3 to create a relevant audio overlay for the video.  This sample demostrates ADK development with TypeScript, multi-agent interaction, tools, and using Google Gen AI SDK.  The output is saved on the user's local disk.
 
 ## Agent Details
 
@@ -31,7 +31,7 @@ flowchart LR
 ### Key Features
 - **Developed with adk-js:** Provides a simple example of an ADK agent written in TypeScript
 - **Multi-agent Flow:** Agent interaction involving an orchestrator and several sub-agents
-- **Tool using Google Gen AI SDK:** Demonstrates the usage of Lyria 2 via Google Gen AI SDK 
+- **Tool using Google Gen AI SDK:** Demonstrates the usage of Lyria 3 via Google Gen AI SDK 
 - **Simple I/O:** Uses local disk for input context, and for saving the generated soundtrack asset
 
 ## Setup and Installation
