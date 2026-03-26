@@ -24,18 +24,23 @@ const generateSoundtrackTool = new FunctionTool({
         apiKey: config.API_KEY
       });
 
-    const response = await ai.models.generateContent({
+    const response = await ai.interactions.create({
       model: config.MODEL_LYRIA,
-      contents: prompt,
+      input: prompt,
+      responseModalities: [ 'audio' ],
     });
 
     try {
-      const output = response?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-      const filePath = `./generated-soundtrack-${Date.now()}.wav`;
+      for (const output of interaction.outputs) {
+        if (output.mime_type === 'audio/mp3') {
+          const filePath = `./generated-soundtrack-${Date.now()}.mp3`;
 
-      await writeFile(filePath, Buffer.from(output, 'base64'));
-      console.log(`🎵 [Tool: generate_soundtrack] Generated soundtrack saved to "${filePath}"...`);
-      return filePath;
+          await writeFile(filePath, Buffer.from(output.data, 'base64'));
+
+          console.log(`🎵 [Tool: generate_soundtrack] Generated soundtrack saved to "${filePath}"...`);
+          return filePath;
+	}
+      }
     } catch (error) {
       console.error('🎵 [Tool: generate_soundtrack] Error saving generated soundtrack:', error);
     }
